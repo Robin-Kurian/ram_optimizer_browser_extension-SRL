@@ -22,15 +22,12 @@ body{width:390px;max-height:590px;margin:0;padding:0;background:#17181b;color:va
 .switch input:focus-visible+.track{outline:2px solid #e8dfcd;outline-offset:3px}
 .glass{border:1px solid var(--edge);border-radius:19px;background:linear-gradient(135deg,#ffffff13 0%,#ffffff04 58%,#ffffff07 100%),#1d1e20e6;box-shadow:0 5px 24px #00000020,inset 0 1px #ffffff09}
 section{padding:12px 13px 13px}
-.section-title{display:flex;align-items:center;justify-content:space-between;min-height:17px;margin-bottom:10px}
-h2{margin:0;font-size:12px;font-weight:720;letter-spacing:-.15px;color:#f2f0eb}
 button,input,textarea{font:inherit}
 button{cursor:pointer;color:inherit}
 .presets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
 .presets button{height:33px;border-radius:10px;border:1px solid #ffffff19;background:#ffffff0c;color:#d3d1cc;font-size:11.5px;font-weight:600;transition:background .1s,border-color .1s}
 .presets button:hover{background:#ffffff20;border-color:#ffffff42}
 .presets button.selected{background:#ded8cb;color:#232427;border-color:#fff9ed;box-shadow:inset 0 1px #fff8}
-.online-dot{width:5px;height:5px;background:#d2cabb;border-radius:100%;box-shadow:0 0 0 3px #d2cabb11}
 .memory-stats{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .memory-stat{border:1px solid #ffffff10;background:#00000025;border-radius:12px;padding:9px 11px 8px;display:flex;flex-direction:column;gap:4px;min-width:0}
 .memory-stat>span{font-size:10px;color:#a6a5a3}
@@ -47,6 +44,10 @@ button{cursor:pointer;color:inherit}
 .tab-stats>div{padding:7px 4px 9px;display:flex;flex-direction:column;align-items:center;gap:4px;background:#0b0c0e3b;border:1px solid #ffffff0e;border-radius:11px}
 .tab-stats strong{font-size:22px;font-weight:690;letter-spacing:-.6px;line-height:1.05;font-variant-numeric:tabular-nums}
 .tab-stats span{font-size:10px;color:#a6a5a3}
+.resources .count{white-space:nowrap}
+.resources:not([open]) .usage-expanded,.resources[open] .usage-collapsed,.resources[open] .count{display:none}
+.panel-inner{padding:0 13px 13px}
+.panel-inner #freezeNow{display:block;margin:10px 0 0 auto}
 .preferences{overflow:hidden}
 summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:6px;padding:13px 14px;cursor:pointer;font-size:11.5px;font-weight:650;min-height:44px}
 summary::-webkit-details-marker{display:none}

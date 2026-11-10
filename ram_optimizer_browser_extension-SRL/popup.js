@@ -26,6 +26,7 @@ function selectedTimer(value) {
     const selected = Number(button.dataset.minutes) === Number(value);
     button.classList.toggle('selected', selected);
     button.setAttribute('aria-pressed', String(selected));
+    if (selected) $('timerSummary').textContent = button.textContent;
   });
 
 }
@@ -87,7 +88,9 @@ async function updateStats() {
   const frozen = tabs.filter(tab => tab.discarded).length;
   $('tabsOpen').textContent = tabs.length;
   $('tabsFrozen').textContent = frozen;
-  $('tabsLoaded').textContent = tabs.length - frozen;
+  const loaded = tabs.length - frozen;
+  $('tabsLoaded').textContent = loaded;
+  $('tabsSummary').textContent = `${tabs.length} open · ${loaded} loaded · ${frozen} frozen`;
 }
 function cpuSample(data) {
   let total = 0, idle = 0;
@@ -110,12 +113,16 @@ async function updateCpu() {
       if (total > 0 && idle >= 0 && idle <= total) {
         const pct = Math.round(Math.max(0, Math.min(100, 100 * (total - idle) / total)));
         $('cpuValue').textContent = `${pct}%`;
+        $('cpuSummary').textContent = `CPU ${pct}%`;
         $('cpuBar').style.width = `${pct}%`;
       }
     }
     cpuPrevious = current;
     cpuPreviousTime = sampledAt;
-  } catch { $('cpuValue').textContent = '—'; }
+  } catch {
+    $('cpuValue').textContent = '—';
+    $('cpuSummary').textContent = 'CPU —';
+  }
 }
 async function updateMemory() {
   try {
@@ -130,7 +137,7 @@ async function updateMemory() {
     $('ramFreeFraction').textContent = `${prettyBytes(free)} / ${prettyBytes(memory.capacity)}`;
     if (settings.enabled && Number.isFinite(settings.ramStartFree)) {
       const gained = free - settings.ramStartFree;
-      $('ramPrimaryLabel').textContent = gained >= 0 ? 'RAM freed' : 'RAM change';
+      $('ramPrimaryLabel').textContent = 'RAM freed';
       $('ramPrimary').textContent = gained >= 0 ? `+${prettyBytes(gained)}` : `−${prettyBytes(Math.abs(gained))}`;
       $('ramPrimary').title = 'Change in system available RAM since auto-freeze was enabled';
     } else {
@@ -143,6 +150,7 @@ async function updateMemory() {
     $('ramFree').textContent = '—';
     $('ramFreeFraction').textContent = '—';
   }
+  $('ramSummary').textContent = `${$('ramPrimaryLabel').textContent} ${$('ramPrimary').textContent} · ${$('ramFree').textContent} free`;
 }
 async function updateAll() {
   if (updating) return;
@@ -240,10 +248,15 @@ async function initialize() {
     });
   }
   $('addExcluded').addEventListener('click', () => changeExcluded());
-  $('protection').addEventListener('toggle', () => {
-    if ($('protection').open) {
-      updateExtensions().catch(error => message(String(error)));
-      requestAnimationFrame(() => { $('protection').scrollIntoView({ block: 'start', behavior: 'instant' }); });
+  const protection = $('protection');
+  let protectionOpen = protection.open;
+  if (protectionOpen) updateExtensions();
+  protection.addEventListener('toggle', () => {
+    if (protection.open === protectionOpen) return;
+    protectionOpen = protection.open;
+    if (protectionOpen) {
+      updateExtensions();
+      requestAnimationFrame(() => { protection.scrollIntoView({ block: 'start', behavior: 'instant' }); });
     }
   });
   $('freezeNow').addEventListener('click', async () => {

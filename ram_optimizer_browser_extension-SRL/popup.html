@@ -19,38 +19,45 @@
       </div>
     </header>
 
-    <section class="glass timer-panel" aria-labelledby="timerTitle">
-      <div class="section-title"><h2 id="timerTitle">Freeze after</h2></div>
-      <div class="presets" role="group" aria-label="Freeze timer">
-        <button type="button" data-minutes="0">Instant</button>
-        <button type="button" data-minutes="0.5">30s</button>
-        <button type="button" data-minutes="1">1m</button>
-        <button type="button" data-minutes="2">2m</button>
-        <button type="button" data-minutes="5">5m</button>
-        <button type="button" data-minutes="15">15m</button>
+    <details class="glass timer-panel">
+      <summary><span>Freeze after</span><span class="detail-end"><span id="timerSummary" class="count">—</span><svg class="chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7 5 5 5-5" /></svg></span></summary>
+      <div class="panel-inner">
+        <div class="presets" role="group" aria-label="Freeze timer">
+          <button type="button" data-minutes="0">Instant</button>
+          <button type="button" data-minutes="0.5">30s</button>
+          <button type="button" data-minutes="1">1m</button>
+          <button type="button" data-minutes="2">2m</button>
+          <button type="button" data-minutes="5">5m</button>
+          <button type="button" data-minutes="15">15m</button>
+        </div>
       </div>
-    </section>
+    </details>
 
-    <section class="glass resources" aria-labelledby="resourcesTitle">
-      <div class="section-title"><h2 id="resourcesTitle">System resources</h2><span class="online-dot" title="Live readings"></span></div>
-      <div class="memory-stats">
-        <div class="memory-stat"><span id="ramPrimaryLabel">RAM used</span><strong id="ramPrimary">—</strong></div>
-        <div class="memory-stat"><span>Free RAM</span><strong id="ramFree">—</strong><small id="ramFreeFraction" class="memory-fraction" aria-label="Free RAM out of total RAM">—</small></div>
+    <details class="glass resources" open>
+      <summary><span class="usage-collapsed">Usage</span><span class="usage-expanded">System Usage</span><span class="detail-end"><span class="count"><span id="ramSummary">RAM —</span> · <span id="cpuSummary">CPU —</span></span><svg class="chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7 5 5 5-5" /></svg></span></summary>
+      <div class="panel-inner">
+        <div class="memory-stats">
+          <div class="memory-stat"><span id="ramPrimaryLabel">RAM used</span><strong id="ramPrimary">—</strong></div>
+          <div class="memory-stat"><span>Free RAM</span><strong id="ramFree">—</strong><small id="ramFreeFraction" class="memory-fraction" aria-label="Free RAM out of total RAM">—</small></div>
+        </div>
+        <div class="cpu-line"><span>CPU</span><strong id="cpuValue">—</strong></div>
+        <div class="meter"><span id="cpuBar"></span></div>
       </div>
-      <div class="cpu-line"><span>CPU</span><strong id="cpuValue">—</strong></div>
-      <div class="meter"><span id="cpuBar"></span></div>
-    </section>
+    </details>
 
-    <section class="glass tab-panel" aria-labelledby="tabsTitle">
-      <div class="section-title"><h2 id="tabsTitle">Tab status</h2><button type="button" id="freezeNow" class="text-button">Freeze now</button></div>
-      <div class="tab-stats">
-        <div><strong id="tabsOpen">—</strong><span>Open</span></div>
-        <div><strong id="tabsLoaded">—</strong><span>Loaded</span></div>
-        <div><strong id="tabsFrozen">—</strong><span>Frozen</span></div>
+    <details class="glass tab-panel">
+      <summary><span>Tab status</span><span class="detail-end"><span id="tabsSummary" class="count">—</span><svg class="chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7 5 5 5-5" /></svg></span></summary>
+      <div class="panel-inner">
+        <div class="tab-stats">
+          <div><strong id="tabsOpen">—</strong><span>Open</span></div>
+          <div><strong id="tabsLoaded">—</strong><span>Loaded</span></div>
+          <div><strong id="tabsFrozen">—</strong><span>Frozen</span></div>
+        </div>
+        <button type="button" id="freezeNow" class="text-button">Freeze now</button>
       </div>
-    </section>
+    </details>
 
-    <details id="protection" class="glass preferences">
+    <details id="protection" class="glass preferences" open>
       <summary><span>Protection &amp; excluded websites</span><span class="detail-end"><span id="protectionCount" class="count">—</span><svg class="chevron" viewBox="0 0 20 20" aria-hidden="true"><path d="m5 7 5 5 5-5" /></svg></span></summary>
       <div class="preferences-inner">
         <label class="setting"><span>Protect pinned tabs</span><input id="protectPinned" type="checkbox"></label>
