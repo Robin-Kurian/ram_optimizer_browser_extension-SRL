@@ -1,0 +1,10 @@
+# Local OS and editor files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Dependencies and generated release archives
+node_modules/
+/browser-ram-optimizer-srl-*-source.zip
+/browser-ram-optimizer-srl-*-webstore.zip

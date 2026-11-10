@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Stackroot Tab Saver",
+  "version": "1.0.0",
+  "description": "Automatically unload inactive tabs to reduce browser memory use. Keep your existing tab groups intact and monitor system resources.",
+  "minimum_chrome_version": "121",
+  "permissions": [
+    "tabs",
+    "tabGroups",
+    "storage",
+    "alarms",
+    "system.memory",
+    "system.cpu",
+    "notifications",
+    "management"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Stackroot Tab Saver"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "short_name": "Stackroot Tab Saver"
+}
