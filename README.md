@@ -1,6 +1,6 @@
-# RAM Optimizer Browser Extension - SRL
+# Ram Optimizer -SRL
 
-RAM Optimizer Browser Extension - SRL is a Chromium extension that frees memory by discarding inactive tabs and organizing them in a Frozen tab group.
+Ram Optimizer -SRL is a Chromium extension that frees memory by discarding inactive tabs and organizing them in a Frozen tab group.
 
 ## Load locally
 
