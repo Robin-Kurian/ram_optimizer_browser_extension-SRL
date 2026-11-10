@@ -16,7 +16,7 @@ const NO_GROUP = chrome.tabGroups.TAB_GROUP_ID_NONE ?? -1;
 let pending = Promise.resolve();
 function serial(action) {
   const task = pending.then(action, action);
-  pending = task.catch(error => console.warn('Stackroot Tab Saver:', error));
+  pending = task.catch(error => console.warn('RAM Optimizer Browser Extension - SRL:', error));
   return task;
 }
 
@@ -247,7 +247,7 @@ async function checkMemory() {
     await chrome.notifications.create(WARNING, {
       type: 'basic', iconUrl: 'icons/icon128.png',
       title: 'High memory usage',
-      message: `RAM is ${usedPercent}% full. Turn on Stackroot Tab Saver?`,
+      message: `RAM is ${usedPercent}% full. Turn on RAM Optimizer Browser Extension - SRL?`,
       buttons: [{ title: 'Turn on' }, { title: 'Dismiss' }],
       priority: 1,
     });

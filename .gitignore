@@ -6,5 +6,5 @@
 
 # Dependencies and generated release archives
 node_modules/
-/browser-ram-optimizer-srl-*-source.zip
-/browser-ram-optimizer-srl-*-webstore.zip
+/ram_optimizer_browser_extension-SRL-*-source.zip
+/ram_optimizer_browser_extension-SRL-*-webstore.zip

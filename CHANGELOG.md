@@ -1,4 +1,10 @@
-# Stackroot Tab Saver 1.0.0 — Frozen group repair
+# RAM Optimizer Browser Extension - SRL
+
+## 1.0.0 — Project rename
+
+Renamed the extension and its source and release packages.
+
+## 1.0.0 — Frozen group repair
 
 Root cause: the worker explicitly refused to move discarded tabs from existing groups, trusted session-only group IDs, did not observe group membership/window/replacement changes, and skipped startup reconciliation when the maintenance alarm already existed.
 
